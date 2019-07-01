@@ -746,6 +746,14 @@ ToolStatus igsioCommon::ConvertStringToToolStatus(const std::string& status)
   {
     return TOOL_PATH_NOT_FOUND;
   }
+  else if (igsioCommon::IsEqualInsensitive("DISABLED", status))
+  {
+    return TOOL_DISABLED;
+  }
+  else if (igsioCommon::IsEqualInsensitive("HIGH_ERROR", status))
+  {
+    return TOOL_HIGH_ERROR;
+  }
   else
   {
     LOG_ERROR("Unknown tool status string received. Defaulting to TOOL_UNKNOWN.");
@@ -797,6 +805,14 @@ std::string igsioCommon::ConvertToolStatusToString(const ToolStatus& status)
   {
     flagFieldValue = "PATH_NOT_FOUND";
   }
+  else if (status == TOOL_DISABLED)
+  {
+    flagFieldValue = "DISABLED";
+  }
+  else if (status == TOOL_HIGH_ERROR)
+  {
+    flagFieldValue = "HIGH_ERROR";
+  }
   else
   {
     LOG_ERROR("Unknown tracker status received - set \"UNKNOWN\" by default!");
@@ -818,7 +834,6 @@ bool VTKIGSIOCOMMON_EXPORT igsioCommon::IsEqualInsensitive(std::string const& a,
     return false;
   }
 }
-
 //----------------------------------------------------------------------------
 bool VTKIGSIOCOMMON_EXPORT igsioCommon::IsEqualInsensitive(std::wstring const& a, std::wstring const& b)
 {

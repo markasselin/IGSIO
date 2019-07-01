@@ -67,7 +67,9 @@ enum ToolStatus
   TOOL_SWITCH3_IS_ON,   /*!< Various buttons/switches on tool */
   TOOL_REQ_TIMEOUT,     /*!< Request timeout status */
   TOOL_INVALID,         /*!< Invalid tool status */
-  TOOL_PATH_NOT_FOUND   /*!< Transform cannot be computed from existing transforms */
+  TOOL_PATH_NOT_FOUND,  /*!< Transform cannot be computed from existing transforms */
+  TOOL_HIGH_ERROR,      /*!< Tool is tracked with high error. */
+  TOOL_DISABLED         /*!< Tool has been software disabled */
 };
 typedef ToolStatus igsioToolStatus;
 
